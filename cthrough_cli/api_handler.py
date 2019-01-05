@@ -6,6 +6,10 @@ def api_handler(url, data):
 		response = requests.request("POST", url, json=data)
 		if response.status_code != 200:
 			return None
-		return response.json()
+		data = response.json()
+		if data.get("status") != "OK":
+			return None
+
+		return data
 	except:
 		return None
