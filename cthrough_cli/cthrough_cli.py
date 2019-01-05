@@ -33,4 +33,11 @@ def process_find_sim_between_two(doc1, doc2, pretty):
 	status = find_sim_between_two(doc1_text, doc2_text,pretty)
 
 	return status
+
+def main():
+	if len(sys.argv) == 1:
+		print ("No action specified")
+		exit()
+
+	action = sys.argv[1]
 	 
