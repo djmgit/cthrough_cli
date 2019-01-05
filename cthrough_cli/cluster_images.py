@@ -1,6 +1,6 @@
-from api_handler import api_handler
+from .api_handler import api_handler
 import tabulate
-from apis import cluster_images_api
+from .apis import cluster_images_api
 
 def cluster_docs(list_of_images, threshold=None, pretty=True):
 	request_body = {
@@ -8,7 +8,7 @@ def cluster_docs(list_of_images, threshold=None, pretty=True):
 		"threshold": threshold
 	}
 
-	response = api_handler(url, request_body)
+	response = api_handler(cluster_images_api, request_body)
 	if not response:
 		print ("Operation could not be completed successfully.")
 		return 1

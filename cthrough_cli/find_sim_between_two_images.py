@@ -1,6 +1,6 @@
-from api_handler import api_handler
+from .api_handler import api_handler
 import tabulate
-from apis import find_sim_between_two_images_api
+from .apis import find_sim_between_two_images_api
 
 def find_sim_between_two_images(img1, img2, pretty=True):
 	request_body = {
@@ -8,7 +8,7 @@ def find_sim_between_two_images(img1, img2, pretty=True):
 		"img2": img2
 	}
 
-	response = api_handler(url, request_body)
+	response = api_handler(find_sim_between_two_images_api, request_body)
 	if not response:
 		print ("Operation could not be completed successfully.")
 		return 1

@@ -1,6 +1,6 @@
-from api_handler import api_handler
+from .api_handler import api_handler
 import tabulate
-from apis import find_images_similar_to_doc_api
+from .apis import find_images_similar_to_doc_api
 
 def find_similar_docs(primary_doc, list_of_images, threshold=None, pretty=True):
 	request_body = {

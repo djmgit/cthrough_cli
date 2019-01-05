@@ -1,13 +1,13 @@
-from api_handler import api_handler
+from .api_handler import api_handler
 import tabulate
-from apis import find_similar_pairs_api
+from .apis import find_similar_pairs_api
 
 def find_similar_pairs(list_of_docs, pretty=True):
 	request_body = {
 		"list_of_docs": list_of_docs
 	}
 
-	response = api_handler(url, request_body)
+	response = api_handler(find_similar_pairs_api, request_body)
 	if not response:
 		print ("Operation could not be completed successfully.")
 		return 1

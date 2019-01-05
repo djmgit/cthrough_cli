@@ -1,6 +1,6 @@
-from api_handler import api_handler
+from .api_handler import api_handler
 import tabulate
-from apis import find_docs_similar_to_image_api
+from .apis import find_docs_similar_to_image_api
 
 def find_docs_similar_to_image(primary_image, list_of_docs, threshold=None, pretty=True):
 	request_body = {
@@ -9,7 +9,7 @@ def find_docs_similar_to_image(primary_image, list_of_docs, threshold=None, pret
 		"threshold": threshold
 	}
 
-	response = api_handler(url, request_body)
+	response = api_handler(find_docs_similar_to_image_api, request_body)
 	if not response:
 		print ("Operation could not be completed successfully.")
 		return 1
