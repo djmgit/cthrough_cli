@@ -4,7 +4,7 @@ from apis import find_docs_similar_to_image_api
 
 def find_docs_similar_to_image(primary_image, list_of_docs, threshold=None, pretty=True):
 	request_body = {
-		"primary_image": primary_doc
+		"primary_image": primary_image
 		"list_of_docs": list_of_docs,
 		"threshold": threshold
 	}
@@ -31,7 +31,7 @@ def find_docs_similar_to_image(primary_image, list_of_docs, threshold=None, pret
 	for doc in response.get("data"):
 		table_body.append([doc.get("name"), doc.get("score")])
 
-	print ("Documents similar to {}:".format(primary_doc.get("name")))
+	print ("Documents similar to {}:".format(primary_image.get("name")))
 	print ("\n")
 	print (tabulate(table_body, table_header, tablefmt="orgtbl"))
 	print ("\n")
