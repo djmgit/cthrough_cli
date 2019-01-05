@@ -5,7 +5,8 @@ from apis import find_similar_docs_api
 def find_similar_docs(primary_doc, list_of_docs, threshold=None, pretty=True):
 	request_body = {
 		"primary_doc": primary_doc
-		"list_of_docs": list_of_docs
+		"list_of_docs": list_of_docs,
+		"threshold": threshold
 	}
 
 	response = api_handler(url, request_body)
