@@ -105,6 +105,10 @@ def process_find_sim_between_two():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	if not doc1 or not doc2:
 		print ("Please provide a valid document path")
@@ -170,6 +174,10 @@ def process_find_similar_docs():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	primary_doc = get_file(primary_doc)
 	if files:
@@ -216,6 +224,10 @@ def process_cluster_docs():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	if files:
 		list_of_docs = get_files(files)
@@ -247,6 +259,10 @@ def process_find_sim_between_two_images():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	if not img1 or not img2:
 		print ("Please provide a valid image path")
@@ -294,6 +310,10 @@ def process_find_sim_between_image_text():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	if not img or not doc:
 		print ("Please provide a valid document and image path")
@@ -359,6 +379,10 @@ def process_find_docs_similar_to_image():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	primary_image = get_image(primary_image)
 	if files:
@@ -412,6 +436,10 @@ def process_find_images_similar_to_doc():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	primary_doc = get_file(primary_doc)
 	if files:
@@ -458,6 +486,10 @@ def process_cluster_images():
 
 	if options.pretty:
 		pretty = options.pretty
+		if pretty == "True":
+			pretty = True
+		else:
+			pretty = False
 
 	if files:
 		list_of_images = get_files(files, is_image=True)
