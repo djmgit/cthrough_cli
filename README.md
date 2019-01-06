@@ -121,6 +121,60 @@ Options:
 python3 . find_sim_between_image_text --img examples/images/skate1.jpg --doc examples/docs/test6.txt 
 Similarity score: 0.48989794855663565
 ```
+### find_docs_similar_to_image
+```
+python3 . find_docs_similar_to_image -h
+Usage: . [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --primary_image=PRIMARY_IMAGE
+                        Enter path for primary_image
+  --files=FILES         Enter list of file paths
+  --directory=DIRECTORY
+                        Enter directory path. This option and files  option
+                        cannot be used together
+  -t THRESHOLD, --threshold=THRESHOLD
+                        Enter threshold
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+python3 . find_docs_similar_to_image --primary_image examples/images/skate1.jpg --directory examples/docs/ -t 0.4
+Documents similar to skate1.jpg:
+
+
+| Document Name   |   Similarity score |
+|-----------------+--------------------|
+| test6.txt       |           0.489898 |
+
+```
+### find_images_similar_to_doc
+```
+ python3 . find_images_similar_to_doc -h
+Usage: . [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --primary_doc=PRIMARY_DOC
+                        Enter path for primary_doc
+  --files=FILES         Enter list of file paths
+  --directory=DIRECTORY
+                        Enter directory path. This option and files  option
+                        cannot be used together
+  -t THRESHOLD, --threshold=THRESHOLD
+                        Enter threshold
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+
+python3 . find_images_similar_to_doc --primary_doc examples/docs/test6.txt --directory examples/images -t 0.4
+Documents similar to test6.txt:
+
+
+| Image Name   |   Similarity score |
+|--------------+--------------------|
+| skate1.jpg   |           0.489898 |
+| skatec.jpg   |           0.489898 |
+
+```
 
 
 
