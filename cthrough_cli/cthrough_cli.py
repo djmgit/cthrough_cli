@@ -12,6 +12,27 @@ import base64
 import os
 import sys
 
+def get_image(file):
+	if not os.path.exists(file) or not os.path.isfile(file):
+		return None
+
+	file_name = os.path.split(file)[1]
+
+	if os.path.splitext(file_name)[1][1:] not in ['png', 'jpg']
+		return None
+
+	content = ""
+	with open(file) as f:
+		content = base64.b64encode(f.read()).decode()
+
+	if content == "":
+		return None
+
+	return {
+		"name": file_name,
+		"content": content
+	}
+
 def get_file(file):
 	if not os.path.exists(file) or not os.path.isfile(file):
 		return None
@@ -33,26 +54,32 @@ def get_file(file):
 		"content": content
 	}
 
-def get_files(files):
+def get_files(files, is_image=False):
 	list_files = [f.strip() for f in files.split(",")]
 	res = []
 
 	for file in list_files:
-		file_obj = get_file(file)
+		if is_image:
+			file_obj = get_image(file)
+		else:
+			file_obj = get_file(file)
 		if not file_obj:
 			return None
 		res.append(file_obj)
 
 	return res
 
-def get_dir(directory):
+def get_dir(directory, is_image=False):
 	if not os.path.exists(directory) or not os.path.isdir(directory):
 		return None
 
 	res = []
 
 	for file in os.listdir(directory):
-		file_obj = get_file(os.path.join(directory, file))
+		if is_image:
+			file_obj = get_image(file)
+		else:
+			file_obj = get_file(os.path.join(directory, file))
 		if not file_obj:
 			return None
 
@@ -190,6 +217,19 @@ def process_cluster_docs():
 	if options.pretty:
 		pretty = options.pretty
 
+	if files:
+		list_of_docs = get_files(files)
+	else:
+		list_of_docs = get_dir(directory)
+
+	if list_of_docs:
+		status = cluster_docs(list_of_docs, threshold, pretty)
+		return status
+	
+	print ("Please provide valid paths")
+	return 1
+
+
 def main():
 	if len(sys.argv) == 1:
 		print ("No action specified")
@@ -202,6 +242,9 @@ def main():
 
 	if action == "find_similar_docs":
 		process_find_similar_docs()
+
+	if action == "cluster_docs":
+		process_cluster_docs()
 
 if __name__ == "__main__":
 	main()

@@ -26,11 +26,11 @@ def cluster_docs(list_of_docs, threshold=None, pretty=True):
 	table = []
 
 	for index, cluster in enumerate(response.get("data")):
-		table.append([index] + cluster)
+		table.append([index, ", ".join(cluster)])
 
 	print ("Clusters: ")
 	print ("\n")
-	print (tabulate(table_body, table_header, tablefmt="orgtbl"))
+	print (tabulate(table, table_header, tablefmt="orgtbl"))
 	print ("\n")
 
 	return 0
