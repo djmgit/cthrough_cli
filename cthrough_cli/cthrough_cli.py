@@ -12,6 +12,27 @@ import base64
 import os
 import sys
 
+def get_file(file):
+	if not os.path.exists(file) or not os.path.isfile(file):
+		return None
+
+	file_name = os.path.split(file)[1]
+
+	if os.path.splitext(file_name)[1][1:] != "txt":
+		return None
+
+	content = ""
+	with open(file) as f:
+		content = f.read()
+
+	if content == "":
+		return None
+
+	return {
+		"name": file_name,
+		"content": content
+	}
+
 def process_find_sim_between_two():
 	pretty = True
 
