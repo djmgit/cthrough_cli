@@ -106,4 +106,21 @@ python3 . find_sim_between_two_images --img1 examples/images/skate1.jpg --img2 e
 skate1.jpg skate2.png
 Similarity score: 0.6
 ```
+### find_sim_between_image_text
+```
+python3 . find_sim_between_image_text -h
+Usage: . [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --img=IMG             Enter path for image
+  --doc=DOC             Enter path for document
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+          
+python3 . find_sim_between_image_text --img examples/images/skate1.jpg --doc examples/docs/test6.txt 
+Similarity score: 0.48989794855663565
+```
+
+
 
