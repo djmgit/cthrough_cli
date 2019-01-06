@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import find_sim_between_image_text_api
 
 def find_sim_between_image_text(img, doc, pretty=True):

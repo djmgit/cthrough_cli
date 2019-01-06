@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import find_images_similar_to_doc_api
 
 def find_images_similar_to_doc(primary_doc, list_of_images, threshold=None, pretty=True):

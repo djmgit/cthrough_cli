@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import cluster_images_api
 
 def cluster_images(list_of_images, threshold=None, pretty=True):

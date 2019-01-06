@@ -74,7 +74,7 @@ def process_find_sim_between_two():
 	doc1 = options.doc1
 	doc2 = options.doc2
 
-	if pretty:
+	if options.pretty:
 		pretty = options.pretty
 
 	if not doc1 or not doc2:
@@ -136,10 +136,10 @@ def process_find_similar_docs():
 		print ("Please provide either list of files or a directry path")
 		return 1
 
-	if files and directry:
+	if files and directory:
 		print ("Both files and list of directories provided. List of files will be used")
 
-	if pretty:
+	if options.pretty:
 		pretty = options.pretty
 
 	primary_doc = get_file(primary_doc)

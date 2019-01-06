@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import cluster_docs_api
 
 def cluster_docs(list_of_docs, threshold=None, pretty=True):

@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import find_similar_pairs_api
 
 def find_similar_pairs(list_of_docs, pretty=True):

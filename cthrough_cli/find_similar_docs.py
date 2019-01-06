@@ -1,5 +1,5 @@
 from .api_handler import api_handler
-import tabulate
+from tabulate import tabulate
 from .apis import find_similar_docs_api
 
 def find_similar_docs(primary_doc, list_of_docs, threshold=None, pretty=True):
