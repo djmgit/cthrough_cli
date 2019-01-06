@@ -229,6 +229,49 @@ def process_cluster_docs():
 	print ("Please provide valid paths")
 	return 1
 
+def process_find_sim_between_two_images():
+	pretty = True
+
+	parser = optparse.OptionParser()
+	parser.add_option('--img1', dest='doc1',
+				  help='Enter path for image1')
+	parser.add_option('--img2', dest='doc2',
+				  help='Enter path for image2')
+	parser.add_option('-p', '--pretty', dest='pretty',
+				  help='Pretty or not, default true')
+
+	(options, args) = parser.parse_args()
+
+	img1 = options.img1
+	img2 = options.img2
+
+	if options.pretty:
+		pretty = options.pretty
+
+	if not img1 or not img2:
+		print ("Please provide a valid image path")
+		return 1
+
+	img1_name = os.path.split(img1)[1]
+	img2_name = os.path.split(img2)[1]
+
+	if os.path.splitext(img1_name)[1][1:] not in ['jpg', 'png']:
+		print ("Please provide jpg or png files only")
+		return 1
+
+	if os.path.splitext(img2_name)[1][1:] != ['jpg', 'png']:
+		print ("Please provide jpg or png files only")
+		return 1
+
+	with open(img1) as f:
+		img1_content = base64.b64encode(f.read()).decode()
+
+	with open(img2) as f:
+		img2_content = base64.b64encode(f.read()).decode()
+
+	status = find_sim_between_two(img1_content, img2_content, pretty)
+
+	return status
 
 def main():
 	if len(sys.argv) == 1:
