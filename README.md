@@ -90,5 +90,20 @@ Clusters:
 |            3 | test5.txt            |
 
 ```
+### find_sim_between_two_images
+```
+python3 . find_sim_between_two_images -h
+Usage: . [options]
 
+Options:
+  -h, --help            show this help message and exit
+  --img1=IMG1           Enter path for image1
+  --img2=IMG2           Enter path for image2
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+                    
+python3 . find_sim_between_two_images --img1 examples/images/skate1.jpg --img2 examples/images/skate2.png 
+skate1.jpg skate2.png
+Similarity score: 0.6
+```
 
