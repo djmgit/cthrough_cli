@@ -2,6 +2,7 @@
 Cthrough CLI allows us to use almost all the features that Cthrough API offers us.
 As of now it does not come as a pip package so we have to use to from source. 
 
+To know more about the API, please read here : https://github.com/djmgit/cthrough/blob/master/README.md
 ### How to use this tool
 - First of all, clone or download this repository
 - Next open terminal and enter into the repo
