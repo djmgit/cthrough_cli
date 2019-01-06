@@ -320,6 +320,59 @@ def process_find_sim_between_image_text():
 
 	return status
 
+def process_find_docs_similar_to_images():
+	pretty = True
+
+	parser = optparse.OptionParser()
+	parser.add_option('--primary_image', dest='primary_image',
+				  help='Enter path for primary_image')
+	parser.add_option('--files', dest='files',
+				  help='Enter list of file paths')
+	parser.add_option('--directory', dest='directory',
+				  help='Enter directory path. This option and files  option cannot be used together')
+	parser.add_option('-t', '--threshold', dest='threshold',
+				  help='Enter threshold')
+	parser.add_option('-p', '--pretty', dest='pretty',
+				  help='Pretty or not, default true')
+
+	(options, args) = parser.parse_args()
+
+	primary_image = options.primary_image
+	files = options.files
+	directory = options.directory
+	threshold = options.threshold
+
+	if not primary_image:
+		print ("Please provide a valid path to primary image.")
+		return 1
+
+	if not threshold:
+		print ("Please provide a valid threshold")
+		return 1
+
+	if not files and not directory:
+		print ("Please provide either list of files or a directry path")
+		return 1
+
+	if files and directory:
+		print ("Both files and list of directories provided. List of files will be used")
+
+	if options.pretty:
+		pretty = options.pretty
+
+	primary_image = get_image(primary_image)
+	if files:
+		list_of_docs = get_files(files)
+	else:
+		list_of_docs = get_dir(directory)
+
+	if primary_image and list_of_images:
+		status = find_docs_similar_to_image(primary_image, list_of_docs, threshold, pretty)
+		return status
+	
+	print ("Please provide valid paths")
+	return 1
+
 def main():
 	if len(sys.argv) == 1:
 		print ("No action specified")
