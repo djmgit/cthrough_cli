@@ -33,6 +33,18 @@ def get_file(file):
 		"content": content
 	}
 
+def get_files(files):
+	list_files = [f.strip() for f in files.split(",")]
+	res = []
+
+	for file in list_files:
+		file_obj = get_file(file)
+		if not file_obj:
+			return None
+		res.append(file_obj)
+
+	return res
+
 def process_find_sim_between_two():
 	pretty = True
 
@@ -134,6 +146,9 @@ def main():
 
 	if action == "find_sim_between_two":
 		process_find_sim_between_two()
+
+	if action == "find_similar_docs":
+		process_find_similar_docs()
 
 if __name__ == "__main__":
 	main()
