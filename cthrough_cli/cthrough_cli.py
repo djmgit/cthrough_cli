@@ -49,6 +49,8 @@ def get_dir(directory):
 	if not os.path.exists(directory) or not os.path.isdir(directory):
 		return None
 
+	res = []
+
 	for file in os.listdir(directory):
 		file_obj = get_file(os.path.join(directory, file))
 		if not file_obj:
@@ -154,6 +156,39 @@ def process_find_similar_docs():
 	
 	print ("Please provide valid paths")
 	return 1
+
+def process_cluster_docs():
+	pretty = True
+
+	parser = optparse.OptionParser()
+	parser.add_option('--files', dest='files',
+				  help='Enter list of file paths')
+	parser.add_option('--directory', dest='directory',
+				  help='Enter directory path. This option and files  option cannot be used together')
+	parser.add_option('-t', '--threshold', dest='threshold',
+				  help='Enter threshold')
+	parser.add_option('-p', '--pretty', dest='pretty',
+				  help='Pretty or not, default true')
+
+	(options, args) = parser.parse_args()
+
+	files = options.files
+	directory = options.directory
+	threshold = options.threshold
+
+	if not threshold:
+		print ("Please provide a valid threshold")
+		return 1
+
+	if not files and not directory:
+		print ("Please provide either list of files or a directry path")
+		return 1
+
+	if files and directory:
+		print ("Both files and list of directories provided. List of files will be used")
+
+	if options.pretty:
+		pretty = options.pretty
 
 def main():
 	if len(sys.argv) == 1:
