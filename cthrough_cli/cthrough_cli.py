@@ -18,11 +18,11 @@ def get_image(file):
 
 	file_name = os.path.split(file)[1]
 
-	if os.path.splitext(file_name)[1][1:] not in ['png', 'jpg']
+	if os.path.splitext(file_name)[1][1:] not in ['png', 'jpg']:
 		return None
 
 	content = ""
-	with open(file) as f:
+	with open(file, 'rb') as f:
 		content = base64.b64encode(f.read()).decode()
 
 	if content == "":
@@ -233,9 +233,9 @@ def process_find_sim_between_two_images():
 	pretty = True
 
 	parser = optparse.OptionParser()
-	parser.add_option('--img1', dest='doc1',
+	parser.add_option('--img1', dest='img1',
 				  help='Enter path for image1')
-	parser.add_option('--img2', dest='doc2',
+	parser.add_option('--img2', dest='img2',
 				  help='Enter path for image2')
 	parser.add_option('-p', '--pretty', dest='pretty',
 				  help='Pretty or not, default true')
@@ -255,21 +255,24 @@ def process_find_sim_between_two_images():
 	img1_name = os.path.split(img1)[1]
 	img2_name = os.path.split(img2)[1]
 
+	print (img1_name, img2_name)
+	#print (os.path.splitext(img1_name)[1][1:], os.path.splitext(img2_name)[1][1:])
+
 	if os.path.splitext(img1_name)[1][1:] not in ['jpg', 'png']:
 		print ("Please provide jpg or png files only")
 		return 1
 
-	if os.path.splitext(img2_name)[1][1:] != ['jpg', 'png']:
+	if os.path.splitext(img2_name)[1][1:] not in ['jpg', 'png']:
 		print ("Please provide jpg or png files only")
 		return 1
 
-	with open(img1) as f:
+	with open(img1, 'rb') as f:
 		img1_content = base64.b64encode(f.read()).decode()
 
-	with open(img2) as f:
+	with open(img2, 'rb') as f:
 		img2_content = base64.b64encode(f.read()).decode()
 
-	status = find_sim_between_two(img1_content, img2_content, pretty)
+	status = find_sim_between_two_images(img1_content, img2_content, pretty)
 
 	return status
 
@@ -288,6 +291,9 @@ def main():
 
 	if action == "cluster_docs":
 		process_cluster_docs()
+
+	if action == "find_sim_between_two_images":
+		process_find_sim_between_two_images()
 
 if __name__ == "__main__":
 	main()
