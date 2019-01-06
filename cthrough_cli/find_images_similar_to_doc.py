@@ -2,9 +2,9 @@ from .api_handler import api_handler
 import tabulate
 from .apis import find_images_similar_to_doc_api
 
-def find_similar_docs(primary_doc, list_of_images, threshold=None, pretty=True):
+def find_images_similar_to_doc(primary_doc, list_of_images, threshold=None, pretty=True):
 	request_body = {
-		"primary_doc": primary_doc
+		"primary_doc": primary_doc,
 		"list_of_images": list_of_images,
 		"threshold": threshold
 	}

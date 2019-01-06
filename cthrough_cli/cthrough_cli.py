@@ -12,7 +12,22 @@ import base64
 import os
 import sys
 
-def process_find_sim_between_two(doc1, doc2, pretty):
+def process_find_sim_between_two():
+	parser = optparse.OptionParser()
+	parser.add_option('--doc1', dest='doc1',
+				  help='Enter path for doc1')
+	parser.add_option('--doc2', dest='doc2',
+				  help='Enter path for doc2')
+
+	(options, args) = parser.parse_args()
+
+	doc1 = options.doc1
+	doc2 = options.doc2
+
+	if not doc1 or not doc2:
+		print ("Please provide a valid document path")
+		return 1
+
 	doc1_name = os.path.split(doc1)
 	doc2_name = os.path.split(doc2)
 
@@ -40,4 +55,10 @@ def main():
 		exit()
 
 	action = sys.argv[1]
+
+	if action == "find_sim_between_two":
+		process_find_sim_between_two()
+
+if __name__ == "__main__":
+	main()
 	 

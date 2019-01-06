@@ -4,7 +4,7 @@ from .apis import find_docs_similar_to_image_api
 
 def find_docs_similar_to_image(primary_image, list_of_docs, threshold=None, pretty=True):
 	request_body = {
-		"primary_image": primary_image
+		"primary_image": primary_image,
 		"list_of_docs": list_of_docs,
 		"threshold": threshold
 	}
