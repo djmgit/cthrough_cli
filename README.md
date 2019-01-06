@@ -62,5 +62,33 @@ Documents similar to test1.txt:
 
                         
 ```
+### cluster_docs
+```
+python3 . cluster_docs -h
+Usage: . [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --files=FILES         Enter list of file paths
+  --directory=DIRECTORY
+                        Enter directory path. This option and files  option
+                        cannot be used together
+  -t THRESHOLD, --threshold=THRESHOLD
+                        Enter threshold
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+
+python3 . cluster_docs --directory examples/docs/ -t 0.4
+Clusters: 
+
+
+|   Cluster ID | Document Names       |
+|--------------+----------------------|
+|            0 | test2.txt, test1.txt |
+|            1 | test4.txt, test3.txt |
+|            2 | test6.txt            |
+|            3 | test5.txt            |
+
+```
 
 
