@@ -13,5 +13,5 @@ def find_sim_between_two(doc1, doc2, pretty=True):
 		print ("Operation could not be completed successfully.")
 		return 1
 
-	print ("Similarity score: " + response.get("data").get("score"))
+	print ("Similarity score: {}".format(response.get("data").get("score")))
 	return 0

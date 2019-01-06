@@ -2,7 +2,7 @@ from .api_handler import api_handler
 import tabulate
 from .apis import cluster_images_api
 
-def cluster_docs(list_of_images, threshold=None, pretty=True):
+def cluster_images(list_of_images, threshold=None, pretty=True):
 	request_body = {
 		"list_of_images": list_of_images,
 		"threshold": threshold
