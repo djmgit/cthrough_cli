@@ -276,6 +276,50 @@ def process_find_sim_between_two_images():
 
 	return status
 
+def process_find_sim_between_image_text():
+	pretty = True
+
+	parser = optparse.OptionParser()
+	parser.add_option('--img', dest='img',
+				  help='Enter path for image')
+	parser.add_option('--doc', dest='doc',
+				  help='Enter path for document')
+	parser.add_option('-p', '--pretty', dest='pretty',
+				  help='Pretty or not, default true')
+
+	(options, args) = parser.parse_args()
+
+	img = options.img
+	doc = options.doc
+
+	if options.pretty:
+		pretty = options.pretty
+
+	if not img or not doc:
+		print ("Please provide a valid document and image path")
+		return 1
+
+	img_name = os.path.split(img)[1]
+	doc_name = os.path.split(doc)[1]
+
+	if os.path.splitext(img_name)[1][1:] not in ['jpg', 'png']:
+		print ("Please provide jpg and png files only for image")
+		return 1
+
+	if os.path.splitext(doc_name)[1][1:] != "txt":
+		print ("Please provide text files only")
+		return 1
+
+	with open(doc) as f:
+		doc_text = f.read()
+
+	with open(img, 'rb') as f:
+		img_content = base64.b64encode(f.read()).decode()
+
+	status = find_sim_between_image_text(img_content, doc_text, pretty)
+
+	return status
+
 def main():
 	if len(sys.argv) == 1:
 		print ("No action specified")
@@ -294,6 +338,9 @@ def main():
 
 	if action == "find_sim_between_two_images":
 		process_find_sim_between_two_images()
+
+	if action == "find_sim_between_image_text":
+		process_find_sim_between_image_text()
 
 if __name__ == "__main__":
 	main()
