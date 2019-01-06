@@ -175,6 +175,31 @@ Documents similar to test6.txt:
 | skatec.jpg   |           0.489898 |
 
 ```
+### cluster_images
+```
+python3 . cluster_images -h
+Usage: . [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --files=FILES         Enter list of file paths
+  --directory=DIRECTORY
+                        Enter directory path. This option and files  option
+                        cannot be used together
+  -t THRESHOLD, --threshold=THRESHOLD
+                        Enter threshold
+  -p PRETTY, --pretty=PRETTY
+                        Pretty or not, default true
+                      
+python3 . cluster_images --directory examples/images/ -t 0.2
+Clusters: 
+
+
+|   Cluster ID | Image Names                        |
+|--------------+------------------------------------|
+|            0 | skate1.jpg, basket.jpg, skatec.jpg |
+
+```
 
 
 
