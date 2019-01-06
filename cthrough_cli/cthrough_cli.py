@@ -45,6 +45,19 @@ def get_files(files):
 
 	return res
 
+def get_dir(directory):
+	if not os.path.exists(directory) or not os.path.isdir(directory):
+		return None
+
+	for file in os.listdir(directory):
+		file_obj = get_file(os.path.join(directory, file))
+		if not file_obj:
+			return None
+
+		res.append(file_obj)
+
+	return res
+
 def process_find_sim_between_two():
 	pretty = True
 
@@ -117,9 +130,11 @@ def process_find_similar_docs():
 
 	if not threshold:
 		print ("Please provide a valid threshold")
+		return 1
 
 	if not files and not directory:
 		print ("Please provide either list of files or a directry path")
+		return 1
 
 	if files and directry:
 		print ("Both files and list of directories provided. List of files will be used")
@@ -133,9 +148,12 @@ def process_find_similar_docs():
 	else:
 		list_of_docs = get_dir(directory)
 
-	status = find_similar_docs(primary_doc, list_of_docs, threshold, pretty)
-
-	return status
+	if primary_doc and list_of_docs:
+		status = find_similar_docs(primary_doc, list_of_docs, threshold, pretty)
+		return status
+	
+	print ("Please provide valid paths")
+	return 1
 
 def main():
 	if len(sys.argv) == 1:
