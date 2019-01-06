@@ -366,7 +366,7 @@ def process_find_docs_similar_to_images():
 	else:
 		list_of_docs = get_dir(directory)
 
-	if primary_image and list_of_images:
+	if primary_image and list_of_docs:
 		status = find_docs_similar_to_image(primary_image, list_of_docs, threshold, pretty)
 		return status
 	
@@ -394,6 +394,9 @@ def main():
 
 	if action == "find_sim_between_image_text":
 		process_find_sim_between_image_text()
+
+	if action == "find_docs_similar_to_image":
+		process_find_docs_similar_to_images()
 
 if __name__ == "__main__":
 	main()
